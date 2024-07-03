@@ -19,10 +19,10 @@ jobs:
         ssh-private-key: ${{ secrets.MARIOKEY }} # change SSH_PRIVATE_KEY to your key name
 
     - name: Add server to known_hosts
-      run: ssh-keyscan 52.221.240.2 >> ~/.ssh/known_hosts
+      run: ssh-keyscan 13.215.248.190 >> ~/.ssh/known_hosts
 
     - name: Copy files via SCP
-      run: scp -r ./* root@52.221.240.2:/www/wwwroot/pasindu.run.place
+      run: scp -r ./* root@13.215.248.190:/www/wwwroot/pasindu.run.place
 
     - name: Verify deployment
-      run: ssh root@52.221.240.2 'ls -l /www/wwwroot/pasindu.run.place'
+      run: ssh root@13.215.248.190 'ls -l /www/wwwroot/pasindu.run.place'
