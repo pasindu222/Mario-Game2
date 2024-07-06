@@ -1,11 +1,11 @@
-import platform from '../img/platform.png'
+import platform from '../img/platform1.png'
 
 console.log(platform)
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
-canvas.width = innerWidth
-canvas.height = innerHeight
+canvas.width = 1024
+canvas.height = 576
 
 const gravity = 1.5
 
@@ -41,28 +41,34 @@ class Player {
 }
 
 class Platform {
-    constructor({x, y}) {
+    constructor({x, y, image}) {
         this.position = {
             x,
             y
         }
 
-        this.width = 200
-        this.height = 20
+        this.image = image
+        this.width = image.width
+        this.height = image.height
+        
     }
 
     draw() {
-        c.fillStyle = 'red'
-        c.fillRect(this.position.x, this.position.y, 
-            this.width, this.height)
+        c.drawImage(this.image, this.position.x, this.position.y)
     }
 }
+
+const image = new Image()
+image.src = platform
+
+console.log(image)
+
 
 const player = new Player()
 //const platform = new Platform()
 const platforms = [new Platform({
-    x:200, y: 500
-}), new Platform({x:500, y:200})]
+    x:0, y: 500, image
+}), new Platform({x:500, y:200, image})]
 
 const keys = {
     right: {
@@ -75,12 +81,14 @@ const keys = {
 
 function animate() {
     requestAnimationFrame(animate)
-    c.clearRect(0, 0, canvas.width, canvas.height)
-    player.update()
+    c.fillStyle = 'white'
+    c.fillRect(0, 0, canvas.width, canvas.height)
+    //player.update()
     platforms.forEach(platform => {
         platform.draw()
     })
    // platform.draw()
+   player.update()
 
     if (keys.right.pressed && player.position.x < 400) {
         player.velocity.x = 5
