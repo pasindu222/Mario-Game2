@@ -66,9 +66,14 @@ console.log(image)
 
 const player = new Player()
 //const platform = new Platform()
-const platforms = [new Platform({
-    x:0, y: 500, image
-}), new Platform({x:500, y:200, image})]
+const platforms = [
+    new Platform({
+        x: 0, 
+        y: 500, 
+        image
+}), 
+new Platform({x: 500, y: 200, image}
+)]
 
 const keys = {
     right: {
