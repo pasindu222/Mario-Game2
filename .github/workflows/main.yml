@@ -16,13 +16,13 @@ jobs:
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.3
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY_NEW }}
 
     - name: Add server to known_hosts
-      run: ssh-keyscan 18.142.228.150 >> ~/.ssh/known_hosts
+      run: ssh-keyscan 13.250.121.227 >> ~/.ssh/known_hosts
 
     - name: Copy files via SCP
-      run: scp -r ./* root@18.142.228.150:/www/wwwroot/eranga.run.place
+      run: scp -r ./* root@13.250.121.227:/www/wwwroot/eranga.run.place
 
     - name: Verify deployment
-      run: ssh root@18.142.228.150 'ls -l /www/wwwroot/eranga.run.place'
+      run: ssh root@13.250.121.227 'ls -l /www/wwwroot/eranga.run.place'
