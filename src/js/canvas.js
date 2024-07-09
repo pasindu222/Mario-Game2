@@ -70,9 +70,8 @@ const platforms = [
     new Platform({
         x: 0, 
         y: 500, 
-        image
 }), 
-new Platform({x: 500, y: 200, image}
+new Platform({x: 500, y: 200}
 )]
 
 const keys = {

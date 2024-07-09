@@ -183,12 +183,10 @@ var player = new Player();
 //const platform = new Platform()
 var platforms = [new Platform({
   x: 0,
-  y: 500,
-  image: image
+  y: 500
 }), new Platform({
   x: 500,
-  y: 200,
-  image: image
+  y: 200
 })];
 var keys = {
   right: {
