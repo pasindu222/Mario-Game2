@@ -186,6 +186,10 @@ var platforms = [new Platform({
   y: 500,
   image: image
 }), new Platform({
+  x: 700,
+  y: 500,
+  image: image
+}), new Platform({
   x: 500,
   y: 200,
   image: image
