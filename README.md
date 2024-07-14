@@ -1,6 +1,8 @@
 Canvas Boilerplate is the go-to solution for quickly creating modern canvas pieces using ES6 and webpack.
 new file local path = D:\AWS\Web site\Games\Mario\New\Mario-Game2
 /root/mario
+http://13.250.121.227:3000
+/www/wwwroot/eranga.run.place
 
 ## Getting Started
 
