@@ -2,6 +2,34 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/img/front.png":
+/*!***************************!*\
+  !*** ./src/img/front.png ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "8499a1df02e30519768e2635e6dafc3f.png");
+
+/***/ }),
+
+/***/ "./src/img/left.png":
+/*!**************************!*\
+  !*** ./src/img/left.png ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "f9d4a3152b1cb681ba592cfdd1803372.png");
+
+/***/ }),
+
 /***/ "./src/img/platform1.png":
 /*!*******************************!*\
   !*** ./src/img/platform1.png ***!
@@ -13,6 +41,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "14777af4aeabb09a36a60206f9dcbf80.png");
+
+/***/ }),
+
+/***/ "./src/img/right.png":
+/*!***************************!*\
+  !*** ./src/img/right.png ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "35d4585803633c0ee63f33343268a898.png");
 
 /***/ })
 
@@ -113,9 +155,15 @@ var __webpack_exports__ = {};
   \**************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _img_platform1_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../img/platform1.png */ "./src/img/platform1.png");
+/* harmony import */ var _img_front_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/front.png */ "./src/img/front.png");
+/* harmony import */ var _img_right_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../img/right.png */ "./src/img/right.png");
+/* harmony import */ var _img_left_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../img/left.png */ "./src/img/left.png");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
 
 console.log(_img_platform1_png__WEBPACK_IMPORTED_MODULE_0__["default"]);
 var canvas = document.querySelector('canvas');
@@ -134,14 +182,16 @@ var Player = /*#__PURE__*/function () {
       x: 0,
       y: 0
     };
-    this.width = 50;
-    this.height = 50;
+    this.width = 100;
+    this.height = 100;
+    this.image = createImage(_img_front_png__WEBPACK_IMPORTED_MODULE_1__["default"]);
   }
   _createClass(Player, [{
     key: "draw",
     value: function draw() {
-      c.fillStyle = "blue";
-      c.fillRect(this.position.x, this.position.y, this.width, this.height);
+      //c.fillStyle = "blue"
+      //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+      c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height);
     }
   }, {
     key: "update",
@@ -176,23 +226,42 @@ var Platform = /*#__PURE__*/function () {
   }]);
   return Platform;
 }();
-var image = new Image();
-image.src = _img_platform1_png__WEBPACK_IMPORTED_MODULE_0__["default"];
-console.log(image);
+function createImage(imageSrc) {
+  var image = new Image();
+  image.src = imageSrc;
+  return image;
+}
+//const image = new Image()
+//image.src = platform
+
+//console.log(image)
+
 var player = new Player();
 //const platform = new Platform()
 var platforms = [new Platform({
   x: 0,
   y: 500,
-  image: image
-}), new Platform({
-  x: 700,
-  y: 500,
-  image: image
+  image: createImage(_img_platform1_png__WEBPACK_IMPORTED_MODULE_0__["default"])
 }), new Platform({
   x: 500,
-  y: 200,
-  image: image
+  y: 500,
+  image: createImage(_img_platform1_png__WEBPACK_IMPORTED_MODULE_0__["default"])
+}), new Platform({
+  x: 1200,
+  y: 250,
+  image: createImage(_img_platform1_png__WEBPACK_IMPORTED_MODULE_0__["default"])
+}), new Platform({
+  x: 1800,
+  y: 100,
+  image: createImage(_img_platform1_png__WEBPACK_IMPORTED_MODULE_0__["default"])
+}), new Platform({
+  x: 2000,
+  y: 320,
+  image: createImage(_img_platform1_png__WEBPACK_IMPORTED_MODULE_0__["default"])
+}), new Platform({
+  x: 2500,
+  y: 500,
+  image: createImage(_img_platform1_png__WEBPACK_IMPORTED_MODULE_0__["default"])
 })];
 var keys = {
   right: {

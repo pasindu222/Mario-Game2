@@ -1,4 +1,7 @@
 import platform from '../img/platform1.png'
+import front from '../img/front.png'
+import right from '../img/right.png'
+import left from '../img/left.png'
 
 console.log(platform)
 const canvas = document.querySelector('canvas')
@@ -19,13 +22,18 @@ class Player {
             x: 0,
             y: 0
         }
-        this.width = 50
-        this.height = 50
+        this.width = 100
+        this.height = 100
+
+        this.image = createImage(front)
     }
 
     draw(){
-        c.fillStyle = "blue"
-        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        //c.fillStyle = "blue"
+        //c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        c.drawImage(this.image, this.position.x, this.position.y,
+            this.width, this.height
+        )
     }
 
     update(){
@@ -58,10 +66,15 @@ class Platform {
     }
 }
 
-const image = new Image()
-image.src = platform
+function createImage(imageSrc){
+    const image = new Image()
+    image.src = imageSrc
+    return image
+}
+//const image = new Image()
+//image.src = platform
 
-console.log(image)
+//console.log(image)
 
 
 const player = new Player()
@@ -69,14 +82,31 @@ const player = new Player()
 const platforms = [
     new Platform({
         x: 0, 
-        y: 500, image 
+        y: 500, 
+        image: createImage(platform) 
 }), 
 new Platform({
-    x: 700, 
-    y: 500, image 
+    x: 500, 
+    y: 500, 
+    image: createImage(platform) 
 }),
-new Platform({x: 500, y: 200, image}
-)]
+new Platform({x: 1200, y: 250, image: createImage(platform) }
+),
+new Platform({
+    x: 1800, 
+    y: 100, 
+    image: createImage(platform) 
+}),
+new Platform({
+    x: 2000, 
+    y: 320, 
+    image: createImage(platform) 
+}),
+new Platform({
+    x: 2500, 
+    y: 500, 
+    image: createImage(platform) 
+}),]
 
 const keys = {
     right: {
