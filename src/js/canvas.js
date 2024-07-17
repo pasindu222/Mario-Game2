@@ -26,12 +26,25 @@ class Player {
         this.height = 100
 
         this.image = createImage(front)
+        this.frames = 0
+        this.sprites = {
+            stand: {
+                right: createImage(front),
+                left: createImage(front)
+            },
+            run: {
+                right: createImage(right),
+                left: createImage(left)
+            }
+        }
+
+        this.currentSprites = this.sprites.stand.right
     }
 
     draw(){
         //c.fillStyle = "blue"
         //c.fillRect(this.position.x, this.position.y, this.width, this.height)
-        c.drawImage(this.image, this.position.x, this.position.y,
+        c.drawImage(this.currentSprites, this.position.x, this.position.y,
             this.width, this.height
         )
     }
@@ -43,7 +56,7 @@ class Player {
 
         if (this.position.y + this.height + this.velocity.y <= canvas.height)
             this.velocity.y += gravity
-        else this.velocity.y = 0
+//        else this.velocity.y = 0
             
     }
 }
@@ -76,10 +89,9 @@ function createImage(imageSrc){
 
 //console.log(image)
 
-
-const player = new Player()
+let player = new Player()
 //const platform = new Platform()
-const platforms = [
+let platforms = [
     new Platform({
         x: 0, 
         y: 500, 
@@ -117,6 +129,53 @@ const keys = {
     }
 }
 
+let scrollOffset = 0
+
+function init() {
+
+
+player = new Player()
+//const platform = new Platform()
+platforms = [
+    new Platform({
+        x: 0, 
+        y: 500, 
+        image: createImage(platform) 
+}), 
+new Platform({
+    x: 500, 
+    y: 500, 
+    image: createImage(platform) 
+}),
+new Platform({x: 1200, y: 250, image: createImage(platform) }
+),
+new Platform({
+    x: 1800, 
+    y: 100, 
+    image: createImage(platform) 
+}),
+new Platform({
+    x: 2000, 
+    y: 320, 
+    image: createImage(platform) 
+}),
+new Platform({
+    x: 2500, 
+    y: 500, 
+    image: createImage(platform) 
+}),]
+
+//const keys = {
+ //   right: {
+ //       pressed: false
+ //   },
+//    left: {
+ //       pressed: false
+ //   }
+//}
+
+scrollOffset = 0
+}
 function animate() {
     requestAnimationFrame(animate)
     c.fillStyle = 'white'
@@ -137,11 +196,13 @@ function animate() {
         player.velocity.x = 0
 
         if (keys.right.pressed) {
+            scrollOffset += 5
             platforms.forEach(platform => {
                 platform.position.x -= 5
             })
             
         }else if (keys.left.pressed) {
+            scrollOffset -= 5
             platforms.forEach(platform => {
                 platform.position.x += 5
             })
@@ -149,6 +210,7 @@ function animate() {
         }
     }
 // platform collusion condition
+
 platforms.forEach(platform => {
     if (player.position.y + player.height <= platform.position.y 
         && player.position.y + player.height + player.velocity.y 
@@ -158,6 +220,16 @@ platforms.forEach(platform => {
         player.velocity.y = 0
     }
 })
+// win condition
+if (scrollOffset > 2000) {
+    console.log("To be continued")
+}
+
+// lose condition
+if (player.position.y > canvas.height) {
+    //console.log("you lose")
+    init()
+}
 }
 animate()
 
@@ -168,6 +240,7 @@ addEventListener('keydown', ({keyCode}) => {
             console.log('left')
            // player.velocity.x -= 1
            keys.left.pressed = true
+           player.currentSprites = player.sprites.run.left
             break
 
         case 83:
@@ -179,6 +252,7 @@ addEventListener('keydown', ({keyCode}) => {
             console.log('right')
            // player.velocity.x += 1
             keys.right.pressed = true
+            player.currentSprites = player.sprites.run.right
             break
 
         case 87:
@@ -197,6 +271,7 @@ addEventListener('keyup', ({keyCode}) => {
             console.log('left')
            // player.velocity.x = 0
             keys.left.pressed = false
+            player.currentSprites = player.sprites.stand.left
             break
 
         case 83:
@@ -208,6 +283,7 @@ addEventListener('keyup', ({keyCode}) => {
             console.log('right')
            // player.velocity.x = 0
             keys.right.pressed = false
+            player.currentSprites = player.sprites.stand.right
             break
 
         case 87:
