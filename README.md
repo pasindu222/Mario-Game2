@@ -1,31 +1,44 @@
+# JavaScript Game Hosting with Automated Deployment
 
-/root/mario
+## Overview
+
+This project demonstrates my journey into enhancing my DevOps skills by hosting a JavaScript game on AWS Cloud and implementing automated deployment using GitHub Actions.
+
+## Features
+
+- **Development:**
+  - Created a JavaScript game using VSCode.
+  
+- **Hosting:**
+  - Deployed the game on an AWS instance for robust and scalable infrastructure.
+
+- **Nginx Configuration:**
+  - Configured Nginx as a reverse proxy to direct traffic from the default HTTP port (80) to the application running on port 3000. This allows access to the game using just the server's IP address.
+
+- **Automated Deployment:**
+  - Integrated GitHub Actions for CI/CD. Every push to the repository triggers a workflow that deploys the latest game version to the AWS instance.
+
+## Skills and Tools
+
+- **Programming:** JavaScript
+- **IDE:** VSCode
+- **Cloud Services:** AWS (EC2)
+- **Web Server:** Nginx
+- **CI/CD:** GitHub Actions
+- **Version Control:** Git, GitHub
+
+## How to Access
+
+You can access the live game [here](http://13.250.121.227).
+
+## Learning Outcomes
+
+This project has been crucial in improving my knowledge and skills in:
+- Cloud computing and AWS services
+- Server configuration with Nginx
+- Implementing CI/CD pipelines using GitHub Actions
+- Integrating development and operations for streamlined processes
+
+## location
 http://13.250.121.227:3000
 /www/wwwroot/eranga.run.place
-
-For this project, I aimed to deepen my understanding of DevOps practices and Git tools, specifically focusing on continuous integration and continuous deployment (CI/CD). Here’s an overview of what I achieved:
-
-##Development:
-
-Developed a JavaScript game using VSCode, ensuring a smooth and efficient coding environment.
-Hosting:
-
-Deployed the game on an AWS instance, utilizing the robust and scalable infrastructure provided by AWS.
-Nginx Configuration:
-
-Configured Nginx as a reverse proxy to route traffic from the default HTTP port to the application running on port 3000. This setup allows the game to be accessed via the server’s IP address without specifying a port number.
-Automated Deployment:
-
-Integrated GitHub Actions to automate the deployment process. Every time I push changes to the repository, GitHub Actions triggers a workflow to deploy the latest version of the game to the AWS instance seamlessly.
-Skills and Tools:
-
-Programming: JavaScript
-IDE: VSCode
-Cloud Services: AWS (EC2)
-Web Server: Nginx
-CI/CD: GitHub Actions
-Version Control: Git, GitHub
-This project has been instrumental in honing my DevOps skills, particularly in the areas of cloud computing, server configuration, and automation. It represents my commitment to continuous learning and my passion for integrating development and operations to streamline processes and improve efficiency.
-
-##Project Link:
-Live Game
